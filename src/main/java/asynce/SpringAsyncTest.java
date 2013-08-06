@@ -1,5 +1,6 @@
 package asynce;
 
+import org.iamzhongyong.framework.OrgAsync;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ public class SpringAsyncTest {
 		System.out.println("no return result,imahzongyong");
 	}
 	
-	@Async
+	@OrgAsync
 	public String testPrintString() throws Exception{
 		System.out.println("-----------------------");
 		System.out.println(Thread.currentThread().getName());

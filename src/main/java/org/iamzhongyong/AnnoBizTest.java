@@ -1,5 +1,7 @@
 package org.iamzhongyong;
 
+import org.iamzhongyong.framework.OrgAsync;
+
 public class AnnoBizTest {
 	
 	@OrgAsync

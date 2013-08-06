@@ -3,6 +3,8 @@ package org.iamzhongyong;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
+import org.iamzhongyong.framework.OrgAsync;
+
 public class AnnoMainTest {
 
 	public static void main(String[] args)  throws Exception{
