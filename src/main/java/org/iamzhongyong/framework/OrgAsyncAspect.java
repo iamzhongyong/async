@@ -24,28 +24,26 @@ public class OrgAsyncAspect {
 				15,
 				2000, 
 				TimeUnit.SECONDS,
-				new ArrayBlockingQueue<Runnable>(12));
-	@Around("execution(* *..*.*(..)) && @annotation(orgAsync)")
-	public Object asyncExecutor(final ProceedingJoinPoint joinPoint, final OrgAsync orgAsync) throws Throwable {
-		System.out.println("开始执行方法体中有注解的方法。。。");
-		
-		executor.submit(new Callable<Object>() {
+				new ArrayBlockingQueue<Runnable>(12),
+				new AsyncThreadFactory());
+
+	
+	@Around("@annotation(org.iamzhongyong.framework.OrgAsync)")
+	public Object asyncExecutor(final ProceedingJoinPoint joinPoint) throws Throwable {
+		Future<?> result = executor.submit(new Callable<Object>() {
 			public Object call() throws Exception {
+				Object result = null;
 				try{
-					Object result = joinPoint.proceed();
+					result = joinPoint.proceed();
 					if(result instanceof Future){
 						return ((Future<?>) result).get();
 					}
-				}catch(Exception e){
-					//
-				} catch (Throwable e) {
+				}catch (Throwable e) {
 					// 
 				}
-				return null;
+				return result;
 			}
-			
 		});
-		joinPoint.proceed();
-		return null;
+		return result.get();
 	}
 }

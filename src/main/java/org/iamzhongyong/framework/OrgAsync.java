@@ -5,7 +5,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 /**
- * 自定义的注解
+ * 自定义的注解,添加了这个注解之后，方法执行的时候会异步来执行
  * @author bixiao.zy
  *
  */

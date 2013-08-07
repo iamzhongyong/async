@@ -14,12 +14,12 @@ public class SpringAsyncTest {
 		System.out.println("no return result,imahzongyong");
 	}
 	
-	@OrgAsync
+	@Async
 	public String testPrintString() throws Exception{
 		System.out.println("-----------------------");
 		System.out.println(Thread.currentThread().getName());
 
-		System.out.println("return result,imahzongyong");
+		//System.out.println("return result,imahzongyong");
 		return "iamzhongyong";
 	}
 }
